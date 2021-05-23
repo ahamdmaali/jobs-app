@@ -8,8 +8,8 @@ const superagent = require('superagent');
 const { error } = require('console');
 const PORT= process.env.PORT || 3030;
 // const client = new pg.Client(process.env.DATABASE_URL);
-// const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
-// const client = new pg.Client( { connectionString: process.env.DATABASE_URL, ssl: process.env.LOCALLY ? false : {rejectUnauthorized: false}} );
+const client = new pg.Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } });
+const client = new pg.Client( { connectionString: process.env.DATABASE_URL, ssl: process.env.LOCALLY ? false : {rejectUnauthorized: false}} );
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 // app.use(methodOverride('_method'));
@@ -48,7 +48,7 @@ superagent.get(url)
 .then(jobDes=>{
     let jDes= jobDes.body;
     jDes.forEach(item=>{
-        jobsArr.push(new JobDes(item))
+        desArr.push(new JobDes(item))
         res.render('results',{jobs:desArr})
     })
 })
@@ -69,7 +69,7 @@ function JobDes(data){
     this.company=data.company;
     this.location= data.location;
     this.url=data.url;
-    this.description =data.description 
+    this.description =data.description; 
 }
  app.listen(PORT,()=>{
      console.log(PORT)
