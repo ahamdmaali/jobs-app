@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>results</title>
+</head>
+<body>
+    <section>
+        <div><% jobs.forEach(item=>{%>
+         <h1><%=item.tilte%></h1>
+         <h2><%=item.company%></h2>
+         <h3><%=item.location%></h3>
+         <h3><%=item.url%></h3>
+         <p><%=item.description%></p>
+        <%})%>
+         <form action="/mylist">
+        <button>Add to my list</button>
+        </form>
+        </div>
+    </section>
+</body>
+</html>
